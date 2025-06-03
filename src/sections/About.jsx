@@ -3,6 +3,8 @@ import Button from "../components/Button.jsx";
 import {useState} from "react";
 import {Element} from "react-scroll";
 
+import { Link as LinkScroll } from 'react-scroll';
+
 const About = () => {
     const [hasCopied, setHasCopied] = useState(false);
 
@@ -55,7 +57,15 @@ const About = () => {
                         <div>
                             <p className="grid-headtext">I work remotely across most timezones.</p>
                             <p className="grid-subtext">I am based in Slovakia, with remote work available.</p>
-                            <Button name="Contact Me" isBeam containerClass="w-full mt-10"/>
+                            <LinkScroll
+                                to="contact"
+                                smooth={true}
+                                duration={1000}
+                                offset={-70}
+                                className="w-fit cursor-pointer"
+                            >
+                                <Button name="Contact Me" isBeam containerClass="w-full mt-10"/>
+                            </LinkScroll>
                         </div>
                     </div>
                 </div>

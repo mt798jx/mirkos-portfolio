@@ -4,6 +4,8 @@ import { Canvas } from '@react-three/fiber';
 import { useMediaQuery } from 'react-responsive';
 import { PerspectiveCamera } from '@react-three/drei';
 
+import { Link as LinkScroll } from 'react-scroll';
+
 import Cube from '../components/Cube.jsx';
 import Rings from '../components/Rings.jsx';
 import ReactLogo from '../components/ReactLogo.jsx';
@@ -55,9 +57,14 @@ const Hero = () => {
       </div>
 
       <div className="absolute bottom-7 left-0 right-0 w-full z-10 c-space">
-        <a href="#about" className="w-fit">
+        <LinkScroll
+            to="about"
+            smooth={true}
+            duration={500}
+            offset={-70}
+            className="w-fit cursor-pointer">
           <Button name="Let's work together" isBeam containerClass="sm:w-fit w-full sm:min-w-96" />
-        </a>
+        </LinkScroll>
       </div>
     </Element>
   );
