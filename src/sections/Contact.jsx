@@ -1,5 +1,6 @@
 import React, {useRef, useState} from 'react'
 import emailjs from '@emailjs/browser'
+import { Element } from 'react-scroll';
 
 const Contact = () => {
     const formRef = useRef();
@@ -50,7 +51,7 @@ const Contact = () => {
     }
 
     return (
-        <section className="c-space my-20" id="contact">
+        <Element className="c-space my-20" name="contact">
             <div className="relative min-h-screen flex items-center justify-center flex-col">
                 <img src="/assets/terminal.png" alt="terminal background" className="absolute inset-0 min-h-screen max-md:hidden" />
                 <div className="contact-container">
@@ -103,7 +104,7 @@ const Contact = () => {
                 </div>
             </div>
 
-        </section>
+        </Element>
     )
 }
 export default Contact

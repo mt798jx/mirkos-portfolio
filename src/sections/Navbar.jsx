@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link as LinkScroll } from 'react-scroll';
 
 import { navLinks } from '../constants/index.js';
 
@@ -6,9 +7,16 @@ const NavItems = ({ onClick = () => {} }) => (
   <ul className="nav-ul">
     {navLinks.map((item) => (
       <li key={item.id} className="nav-li">
-        <a href={item.href} className="nav-li_a" onClick={onClick}>
+        <LinkScroll
+            to={item.href.replace('#','')}
+            smooth={true}
+            duration={500}
+            offset={-70}
+            className="nav-li_a cursor-pointer"
+            onClick={onClick}
+        >
           {item.name}
-        </a>
+        </LinkScroll>
       </li>
     ))}
   </ul>
@@ -24,9 +32,15 @@ const Navbar = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/90">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center py-5 mx-auto c-space">
-          <a href="#home" className="text-neutral-400 font-bold text-xl hover:text-white transition-colors">
+          <LinkScroll
+              to="home"
+              smooth={true}
+              duration={500}
+              offset={-70}
+              className="text-neutral-400 font-bold text-xl hover:text-white transition-colors cursor-pointer"
+          >
             Miroslav
-          </a>
+          </LinkScroll>
 
           <button
             onClick={toggleMenu}

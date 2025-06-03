@@ -5,12 +5,13 @@ import { OrbitControls } from '@react-three/drei';
 import Developer from '../components/Developer.jsx';
 import CanvasLoader from '../components/Loading.jsx';
 import { workExperiences } from '../constants/index.js';
+import {Element} from "react-scroll";
 
 const WorkExperience = () => {
     const [animationName, setAnimationName] = useState('idle');
 
     return (
-        <section className="c-space my-20" id="work">
+        <Element className="c-space my-20">
             <div className="w-full text-white-600">
                 <p className="head-text">My Work Experience</p>
 
@@ -58,7 +59,7 @@ const WorkExperience = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </Element>
     );
 };
 

@@ -1,8 +1,9 @@
 import React from 'react'
+import {Element} from "react-scroll";
 
 export const Footer = () => {
     return (
-        <section className="c-space pt-7 pb-3 border-t border-black-300 flex justify-between items-center flex-wrap gap-5">
+        <Element className="c-space pt-7 pb-3 border-t border-black-300 flex justify-between items-center flex-wrap gap-5">
             <div className="text-white-500 flex gap-2">
                 <p>Terms & Conditions</p>
                 <p>|</p>
@@ -22,6 +23,6 @@ export const Footer = () => {
             </div>
 
             <p className="text-white-500">© 2025 Miroslav Tvrdoň. All rights reserved.</p>
-        </section>
+        </Element>
     )
 }

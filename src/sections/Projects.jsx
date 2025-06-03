@@ -4,6 +4,7 @@ import {Canvas} from "@react-three/fiber";
 import {Center, OrbitControls} from "@react-three/drei";
 import CanvasLoader from "../components/Loading.jsx";
 import DemoComputer from "../components/DemoComputer.jsx";
+import {Element} from "react-scroll";
 
 const Projects = () => {
     const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
@@ -22,7 +23,7 @@ const Projects = () => {
     }
 
     return (
-        <section className="c-space my-20" id="work">
+        <Element className="c-space my-20" name="work">
             <p className="head-text">My work</p>
 
             <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
@@ -85,7 +86,7 @@ const Projects = () => {
                 </div>
 
             </div>
-        </section>
+        </Element>
     )
 }
 export default Projects

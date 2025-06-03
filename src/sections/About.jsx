@@ -1,6 +1,7 @@
 import Globe from "react-globe.gl";
 import Button from "../components/Button.jsx";
 import {useState} from "react";
+import {Element} from "react-scroll";
 
 const About = () => {
     const [hasCopied, setHasCopied] = useState(false);
@@ -14,7 +15,7 @@ const About = () => {
     }
 
     return (
-        <section className="c-space my-20" id="about">
+        <Element className="c-space my-20" name="about">
             <div className="grid xl:grid-cols-3 xl:grid-rows-6 md:grid-cols-2 grid-cols-1 gap-5 h-full">
                 <div className="col-span-1 xl:row-span-3">
                     <div className="grid-container">
@@ -82,7 +83,7 @@ const About = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </Element>
     )
 }
 export default About
