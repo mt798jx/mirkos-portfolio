@@ -62,6 +62,8 @@ const About = () => {
                                 smooth={true}
                                 duration={1000}
                                 offset={-70}
+                                spy={true}
+                                activeClass="nav-active"
                                 className="w-fit cursor-pointer"
                             >
                                 <Button name="Contact Me" isBeam containerClass="w-full mt-10"/>

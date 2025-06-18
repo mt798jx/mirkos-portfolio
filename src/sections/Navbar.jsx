@@ -11,7 +11,9 @@ const NavItems = ({ onClick = () => {} }) => (
             to={item.href.replace('#','')}
             smooth={true}
             duration={500}
-            offset={-70}
+            offset={item.href === '#home' ? 0 : -70}
+            spy={true}
+            activeClass="nav-active"
             className="nav-li_a cursor-pointer"
             onClick={onClick}
         >
@@ -36,7 +38,9 @@ const Navbar = () => {
               to="home"
               smooth={true}
               duration={500}
-              offset={-70}
+              offset={0}
+              spy={true}
+              activeClass="nav-active"
               className="text-neutral-400 font-bold text-xl hover:text-white transition-colors cursor-pointer"
           >
             Miroslav

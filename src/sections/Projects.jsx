@@ -63,6 +63,19 @@ const Projects = () => {
                         <button className="arrow-btn" onClick={() => handleNavigation('previous')}>
                             <img src="/assets/left-arrow.png" alt="left arrow" className="w-4 h-4"/>
                         </button>
+                        <div className="flex items-center gap-2.5">
+                            {myProjects.map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => setSelectedProjectIndex(index)}
+                                    className={`w-3 h-3 rounded-full transition-all duration-300 hover:bg-white hover:scale-110 hover:opacity-80 ${
+                                        selectedProjectIndex === index
+                                            ? 'bg-white scale-125'
+                                            : 'bg-gray-500 opacity-50'
+                                    }`}
+                                />
+                            ))}
+                        </div>
                         <button className="arrow-btn" onClick={() => handleNavigation('next')}>
                             <img src="/assets/right-arrow.png" alt="right arrow" className="w-4 h-4"/>
                         </button>
