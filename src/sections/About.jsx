@@ -24,7 +24,7 @@ const About = () => {
                         <img src="/assets/grid1.png" alt="grid-1" className="w-full sm:h-[276px] h-fit object-contain" />
                         <div>
                             <p className="grid-headtext">Hi, I am Miroslav</p>
-                            <p className="grid-subtext">With 2 years of experience, I have honed my skills in frontend and backend development, with a focus on websites, APIs.</p>
+                            <p className="grid-subtext">With 2 years of experience, I have developed strong skills in FE and BE development, with a focus on websites and APIs.</p>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@ const About = () => {
                         <img src="/assets/grid2.png" alt="grid-2" className="w-full sm:h-[276px] h-fit object-contain" />
                         <div>
                             <p className="grid-headtext">Tech Stack</p>
-                            <p className="grid-subtext">I specialize in JavaScript with a focus on React and Next.js ecosystems.</p>
+                            <p className="grid-subtext">I specialize in modern frontend development with TypeScript, focusing on React and Vite-based projects.</p>
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@ const About = () => {
                         <img src="/assets/grid3.png" alt="grid-3" className="w-full sm:h-[266px] h-fit object-contain" />
                         <div>
                             <p className="grid-headtext">My Passion for Coding</p>
-                            <p className="grid-subtext">I love solving problems and building things through code. Coding is not just my profession - it is my passion.</p>
+                            <p className="grid-subtext">I love solving problems and building things through code. For me, coding is not just a profession – it’s a passion that drives me to constantly learn, experiment, and create meaningful solutions.</p>
                         </div>
                     </div>
                 </div>
