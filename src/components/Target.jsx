@@ -5,23 +5,24 @@ import gsap from 'gsap';
 
 const Target = (props) => {
   const targetRef = useRef();
-  const { scene } = useGLTF(
-    'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/target-stand/model.gltf',
-  );
+  const { scene } = useGLTF('/models/target.glb');
 
   useGSAP(() => {
+    if (!targetRef.current) return;
+
     gsap.to(targetRef.current.position, {
-      y: targetRef.current.position.y + 0.5,
-      duration: 1.5,
+      y: targetRef.current.position.y + 0.3,
+      duration: 1.8,
       repeat: -1,
+      ease: "sine.inOut",
       yoyo: true,
     });
   });
 
   return (
-    <mesh {...props} ref={targetRef} rotation={[0, Math.PI / 5, 0]} scale={1.5}>
+    <group ref={targetRef} {...props} rotation={[0, Math.PI, 0]} scale={0.35}>
       <primitive object={scene} />
-    </mesh>
+    </group>
   );
 };
 
