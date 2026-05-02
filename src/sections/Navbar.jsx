@@ -11,8 +11,10 @@ const NavItems = ({ onClick = () => {} }) => (
             to={item.href.replace('#','')}
             smooth={true}
             duration={500}
-            offset={item.href === '#home' ? 0 : -70}
+            offset={item.href === '#home' ? 0 : -120}
             spy={true}
+            isDynamic={true}
+            spyThrottle={100}
             activeClass="nav-active"
             className="nav-li_a cursor-pointer"
             onClick={onClick}
@@ -40,6 +42,8 @@ const Navbar = () => {
               duration={500}
               offset={0}
               spy={true}
+              isDynamic={true}
+              spyThrottle={100}
               activeClass="nav-active"
               className="text-neutral-400 font-bold text-xl hover:text-white transition-colors cursor-pointer"
           >

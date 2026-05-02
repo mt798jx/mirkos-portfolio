@@ -5,6 +5,17 @@ import {Element} from "react-scroll";
 
 import { Link as LinkScroll } from 'react-scroll';
 
+const techStack = [
+    { name: 'LangChain', icon: '/assets/langchain.svg' },
+    { name: 'Snowflake', icon: '/assets/snowflake.svg' },
+    { name: 'Databricks', icon: '/assets/databricks.svg' },
+    { name: 'Python', icon: '/assets/python.svg' },
+    { name: 'TypeScript', icon: '/assets/typescript.png' },
+    { name: 'SQL', icon: '/assets/sql.svg' },
+    { name: 'Docker', icon: '/assets/docker.svg' },
+    { name: 'REST APIs', icon: '/assets/api.svg' },
+];
+
 const About = () => {
     const [hasCopied, setHasCopied] = useState(false);
 
@@ -23,18 +34,25 @@ const About = () => {
                     <div className="grid-container">
                         <img src="/assets/grid1.png" alt="grid-1" className="w-full sm:h-[276px] h-fit object-contain" />
                         <div>
-                            <p className="grid-headtext">Hi, I am Miroslav</p>
-                            <p className="grid-subtext">With 2 years of experience, I have developed strong skills in FE and BE development, with a focus on websites and APIs.</p>
+                            <p className="grid-headtext">Software Engineer</p>
+                            <p className="grid-subtext">I build reliable software, data workflows, and automation with a practical mindset.</p>
                         </div>
                     </div>
                 </div>
 
                 <div className="col-span-1 xl:row-span-3">
                     <div className="grid-container">
-                        <img src="/assets/grid2.png" alt="grid-2" className="w-full sm:h-[276px] h-fit object-contain" />
+                        <div className="about-tech-visual">
+                            {techStack.map((tech) => (
+                                <span key={tech.name} className="about-tech-item">
+                                    <img src={tech.icon} alt="" />
+                                    {tech.name}
+                                </span>
+                            ))}
+                        </div>
                         <div>
                             <p className="grid-headtext">Tech Stack</p>
-                            <p className="grid-subtext">I specialize in modern frontend development with TypeScript, focusing on React and Vite-based projects.</p>
+                            <p className="grid-subtext">Focused on software, data platforms, automation, and practical engineering tools.</p>
                         </div>
                     </div>
                 </div>
@@ -55,8 +73,8 @@ const About = () => {
                             />
                         </div>
                         <div>
-                            <p className="grid-headtext">I work remotely across most timezones.</p>
-                            <p className="grid-subtext">I am based in Slovakia, with remote work available.</p>
+                            <p className="grid-headtext">Based in Košice, Slovakia</p>
+                            <p className="grid-subtext">Open to clear communication, teamwork, and learning fast in technical environments.</p>
                             <LinkScroll
                                 to="contact"
                                 smooth={true}
@@ -76,8 +94,8 @@ const About = () => {
                     <div className="grid-container">
                         <img src="/assets/grid3.png" alt="grid-3" className="w-full sm:h-[266px] h-fit object-contain" />
                         <div>
-                            <p className="grid-headtext">My Passion for Coding</p>
-                            <p className="grid-subtext">I love solving problems and building things through code. For me, coding is not just a profession – it’s a passion that drives me to constantly learn, experiment, and create meaningful solutions.</p>
+                            <p className="grid-headtext">Engineering mindset</p>
+                            <p className="grid-subtext">I like turning unclear problems into structured, maintainable solutions that people can actually use. I value clean communication, ownership, and steady improvement.</p>
                         </div>
                     </div>
                 </div>
