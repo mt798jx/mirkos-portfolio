@@ -1,4 +1,4 @@
-@import url('https://fonts.cdnfonts.com/css/general-sans');
+@import url("https://fonts.cdnfonts.com/css/general-sans");
 
 @tailwind base;
 @tailwind components;
@@ -6,7 +6,7 @@
 
 body {
   background: #010103;
-  font-family: 'General Sans', sans-serif;
+  font-family: "General Sans", sans-serif;
 }
 
 @layer utilities {
@@ -57,13 +57,24 @@ body {
 
   /* hero section */
   .hero-section {
+    min-height: 100vh;
+    min-height: 100svh;
     background:
-      radial-gradient(circle at 50% 42%, rgba(56, 189, 248, 0.07), transparent 34%),
+      radial-gradient(
+        circle at 50% 42%,
+        rgba(56, 189, 248, 0.07),
+        transparent 34%
+      ),
       linear-gradient(180deg, rgba(1, 1, 3, 0.2), #010103 92%);
   }
 
+  .hero-canvas_wrap {
+    @apply absolute inset-0 h-full w-full;
+    contain: layout paint size;
+  }
+
   .hero-section::after {
-    content: '';
+    content: "";
     @apply pointer-events-none absolute inset-x-0 bottom-0 h-40;
     background: linear-gradient(180deg, transparent, #010103);
   }
@@ -74,7 +85,13 @@ body {
 
   .hero-marquee {
     @apply relative mx-auto mt-4 flex w-full max-w-3xl overflow-hidden rounded-lg border border-black-300 bg-black-200/50 py-2 shadow-black-200 shadow-lg;
-    mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      black 12%,
+      black 88%,
+      transparent
+    );
   }
 
   .hero-marquee_track {
@@ -113,6 +130,136 @@ body {
 
   .copy-container {
     @apply cursor-pointer flex justify-center items-center gap-2;
+  }
+
+  /* CV section */
+  .cv-section {
+    @apply mt-12 rounded-lg border border-black-300 bg-black-200 p-5 sm:p-7;
+  }
+
+  .cv-intro {
+    @apply flex flex-col gap-5 md:flex-row md:items-center md:justify-between;
+  }
+
+  .cv-intro_text {
+    @apply max-w-2xl text-base leading-7 text-[#afb0b6];
+  }
+
+  .cv-toggle {
+    @apply flex w-full items-center justify-center rounded-md border border-black-300 bg-black-300 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-white-500 hover:bg-black-500 active:scale-95 md:w-fit;
+  }
+
+  .cv-preview {
+    @apply mt-7 overflow-hidden rounded-lg border border-black-300 bg-black-300/50 text-white;
+  }
+
+  .cv-header {
+    @apply flex flex-col gap-6 border-b border-black-300 bg-black-200 p-5 md:flex-row md:items-start md:justify-between md:p-7;
+  }
+
+  .cv-identity {
+    @apply flex items-center gap-4;
+  }
+
+  .cv-avatar {
+    @apply h-16 w-16 shrink-0 rounded-lg border border-black-300 bg-black-300 object-cover object-top sm:h-20 sm:w-20;
+  }
+
+  .cv-kicker {
+    @apply mb-2 text-xs font-bold uppercase text-white-500;
+  }
+
+  .cv-header h2 {
+    @apply text-3xl font-black text-white sm:text-4xl;
+  }
+
+  .cv-contact {
+    @apply grid gap-2 text-sm font-medium text-white-600 md:text-right;
+  }
+
+  .cv-contact a {
+    @apply text-white-600 transition-colors hover:text-white;
+  }
+
+  .cv-body {
+    @apply grid gap-4 p-4 sm:p-6 lg:grid-cols-2;
+  }
+
+  .cv-block {
+    @apply rounded-lg border border-black-300 bg-black-200 p-5 transition-colors duration-300 hover:border-black-500;
+  }
+
+  .cv-block_wide {
+    @apply lg:col-span-2;
+  }
+
+  .cv-block h3 {
+    @apply mb-4 text-sm font-black uppercase text-white;
+  }
+
+  .cv-block h4 {
+    @apply text-base font-bold text-white;
+  }
+
+  .cv-block p {
+    @apply text-sm leading-7 text-white-600;
+  }
+
+  .cv-block strong {
+    @apply font-semibold text-white;
+  }
+
+  .cv-block p + p {
+    @apply mt-4;
+  }
+
+  .cv-timeline {
+    @apply grid gap-4;
+  }
+
+  .cv-timeline_item {
+    @apply relative grid gap-2 border-l-2 border-black-500 pl-4;
+  }
+
+  .cv-timeline_item::before {
+    content: "";
+    @apply absolute -left-[7px] top-1 h-3 w-3 rounded-full border border-white-500 bg-black-200;
+  }
+
+  .cv-timeline_item p {
+    @apply mt-1 leading-6;
+  }
+
+  .cv-meta {
+    @apply flex flex-wrap gap-x-4 gap-y-1 text-xs font-semibold uppercase text-white-500;
+  }
+
+  .cv-skills {
+    @apply grid gap-4 md:grid-cols-2;
+  }
+
+  .cv-skill_group {
+    @apply rounded-lg border border-black-300 bg-black-300/70 p-4;
+  }
+
+  .cv-skill_group ul {
+    @apply mt-3 grid gap-2;
+  }
+
+  .cv-skill_group li {
+    @apply text-sm leading-6 text-white-600;
+  }
+
+  .cv-skill_group li strong {
+    @apply font-semibold text-white;
+  }
+
+  .cv-tags {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .cv-tags span {
+    @apply rounded-md border border-black-300 bg-black-300/80 px-3 py-2 text-sm font-semibold text-white-600;
   }
 
   /* projects section  */

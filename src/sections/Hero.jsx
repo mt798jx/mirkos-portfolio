@@ -33,7 +33,7 @@ const Hero = () => {
   const sizes = calculateSizes(isSmall, isMobile, isTablet);
 
   return (
-    <Element className="hero-section min-h-screen w-full flex flex-col relative overflow-hidden" name="home" id="home">
+    <Element className="hero-section w-full flex flex-col relative overflow-hidden" name="home" id="home">
       <div className="w-full mx-auto flex flex-col sm:mt-32 mt-24 c-space gap-3 relative z-10">
         <p className="hero_tag text-gray_gradient">Software Engineer</p>
         <p className="max-w-2xl mx-auto text-center text-white-600 sm:text-lg text-sm leading-7">
@@ -53,8 +53,12 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="w-full h-full absolute inset-0">
-        <Canvas className="w-full h-full">
+      <div className="hero-canvas_wrap">
+        <Canvas
+          className="w-full h-full"
+          resize={{ scroll: false, debounce: { scroll: 120, resize: 0 } }}
+          dpr={[1, isMobile ? 1.5 : 2]}
+        >
           <Suspense fallback={<CanvasLoader />}>
             <Leva hidden />
             <PerspectiveCamera makeDefault position={[0, 0, 30]} />
