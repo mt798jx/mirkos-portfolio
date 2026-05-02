@@ -16,6 +16,11 @@ export const navLinks = [
   },
   {
     id: 4,
+    name: 'Experience',
+    href: '#experience',
+  },
+  {
+    id: 5,
     name: 'Contact',
     href: '#contact',
   },
@@ -260,29 +265,38 @@ export const calculateSizes = (isSmall, isMobile, isTablet) => {
 export const workExperiences = [
   {
     id: 1,
-    name: 'Erste Digital',
-    pos: 'Chatbot Developer',
-    duration: 'June 2025 - Present',
-    title: "Framer serves as my go-to tool for creating interactive prototypes. I use it to bring designs to  life, allowing stakeholders to experience the user flow and interactions before development.",
-    icon: '/assets/framer.svg',
-    animation: 'victory',
+    name: 'Siemens Healthineers',
+    pos: 'Software Engineer',
+    duration: 'May 2026 - Present',
+    title:
+      'Beginning a new role focused on software and data engineering workflows. I am building domain knowledge while working with modern data platforms such as Click, Snowflake, and Databricks.',
+    icon: '/assets/siemens-healthineers-logo.jpg',
   },
   {
     id: 2,
-    name: 'U. S. Steel Košice',
-    pos: 'IT Asset Management Specialist',
-    duration: '2023 - present',
-    title: "Figma is my collaborative design platform of choice. I utilize it to work seamlessly with team members and clients, facilitating real-time feedback and design iterations. Its cloud-based.",
-    icon: '/assets/figma.svg',
-    animation: 'clapping',
+    name: 'Erste Digital',
+    pos: 'Chatbot Developer',
+    duration: 'Jun 2025 - Apr 2026',
+    title:
+      'Designed and developed an advanced chatbot that improved user interaction and engagement. I implemented new features, supported performance, scalability, and security, and collaborated on code reviews to improve code quality.',
+    icon: '/assets/erste-digital-logo.png',
   },
   {
     id: 3,
-    name: 'Slovak Ice Hockey Federation',
+    name: 'U. S. Steel Košice',
+    pos: 'IT Asset Management Specialist',
+    duration: 'Oct 2023 - Mar 2026',
+    title:
+      'Provided comprehensive IT support by configuring and deploying new PCs for employees, staff, and customer use. I helped streamline the setup process, reducing deployment time by 20%, while collaborating with teams to improve support efficiency.',
+    icon: '/assets/us-steel-logo.png',
+  },
+  {
+    id: 4,
+    name: 'Hockey Slovakia',
     pos: 'Linesman',
-    duration: '2022 - present',
-    title: "Notion helps me keep my projects organized. I use it for project management, task tracking, and as a central hub for documentation, ensuring that everything from design notes to.",
-    icon: '/assets/notion.svg',
-    animation: 'salute',
+    duration: 'Aug 2022 - Present',
+    title:
+      'Served as a linesman for Hockey Slovakia, ensuring fair play and clear communication with players. I assisted head referees in maintaining game flow and enforcing rules, developing strong decision-making under pressure.',
+    icon: '/assets/hockey-slovakia-logo.jpg',
   },
 ];
