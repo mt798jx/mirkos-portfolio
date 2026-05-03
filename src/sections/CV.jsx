@@ -169,15 +169,25 @@ const CV = () => {
               </p>
             </div>
 
-            <button
-              type="button"
-              className="cv-toggle"
-              aria-expanded={isOpen}
-              aria-controls="cv-preview"
-              onClick={() => setIsOpen((current) => !current)}
-            >
-              {isOpen ? "Hide CV" : "View CV"}
-            </button>
+            <div className="cv-actions">
+              <button
+                type="button"
+                className="cv-toggle"
+                aria-expanded={isOpen}
+                aria-controls="cv-preview"
+                onClick={() => setIsOpen((current) => !current)}
+              >
+                {isOpen ? "Hide CV" : "View CV"}
+              </button>
+
+              <a
+                className="cv-download"
+                href="/assets/Miroslav_Tvrdon_CV.pdf"
+                download="Miroslav_Tvrdon_CV.pdf"
+              >
+                Download CV
+              </a>
+            </div>
           </div>
 
           {isOpen && (

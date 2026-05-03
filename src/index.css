@@ -155,8 +155,17 @@ body {
     @apply max-w-2xl text-base leading-7 text-[#afb0b6];
   }
 
-  .cv-toggle {
+  .cv-actions {
+    @apply flex w-full flex-col gap-3 sm:flex-row md:w-fit;
+  }
+
+  .cv-toggle,
+  .cv-download {
     @apply flex w-full items-center justify-center rounded-md border border-black-300 bg-black-300 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-white-500 hover:bg-black-500 active:scale-95 md:w-fit;
+  }
+
+  .cv-download {
+    @apply border-white-500 bg-white text-black-200 hover:border-white hover:bg-white-600;
   }
 
   .cv-preview {
