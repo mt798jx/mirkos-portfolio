@@ -37,7 +37,7 @@ const BackPlate = ({ position, rotation, color, isLight = false }) => (
 
 const ProjectPreview = ({ texture, isLight = false }) => {
   const root = useRef();
-  const videoTexture = useVideoTexture(texture || "/textures/project/project1.mp4");
+  const videoTexture = useVideoTexture(texture);
   const palette = {
     frame: isLight ? "#d8e3ef" : "#080b12",
     bezel: isLight ? "#f8fafc" : "#111827",
