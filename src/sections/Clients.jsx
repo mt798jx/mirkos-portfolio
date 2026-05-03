@@ -1,33 +1,42 @@
-import {clientReviews} from "../constants/index.js";
+import {collaborationNotes} from "../constants/index.js";
 import {Element} from "react-scroll";
 
 const Clients = () => {
+    const carouselNotes = [...collaborationNotes, ...collaborationNotes];
+
     return (
-        <Element className="c-space my-20">
-            <h3 className="head-text">Hear from My Clients</h3>
+        <Element className="c-space my-20" name="strengths">
+            <div className="strengths-heading">
+                <p className="text-white-500 text-sm uppercase tracking-[0.3em]">Strengths</p>
+                <h3 className="head-text">What I Bring to a Project</h3>
+                <p className="strengths-intro">
+                    A snapshot of how I think, build, and collaborate across AI, web development, and reliable product delivery.
+                </p>
+            </div>
 
-            <div className="client-container">
-                {clientReviews.map(({id, name, review, img, position}) => (
-                    <div key={id} className="client-review">
-                        <div>
-                            <p className="text-white font-light">{review}</p>
-
-                            <div className="client-content">
-                                <div className="flex gap-3">
-                                    <img src={img} alt={name} className="w-12 h-12 rounded-full" />
-                                    <div className="flex flex-col">
-                                        <p className="font-semibold text-white-800">{name}</p>
-                                        <p className="text-white-500 md:text-base text-sm font-light">{position}</p>
-                                    </div>
-                                </div>
-
-                                <div className="flex self-end items-center gap-2">
-                                    {Array.from({length: 5}).map((_, i) => (
-                                        <img key={i} src="/assets/star.png" alt="star" className="w-5 h-5"/>
-                                    ))}
-                                </div>
+            <div className="strengths-carousel" aria-label="Miroslav's strengths">
+                <div className="strengths-track">
+                    {carouselNotes.map(({id, label, title, detail}, index) => (
+                        <article key={`${id}-${index}`} className="strength-card">
+                            <div className="strength-card_top">
+                                <span>{label}</span>
+                                <p>{String((index % collaborationNotes.length) + 1).padStart(2, '0')}</p>
                             </div>
-                        </div>
+
+                            <div className="strength-card_body">
+                                <h4>{title}</h4>
+                                <p>{detail}</p>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            </div>
+
+            <div className="strengths-grid">
+                {collaborationNotes.slice(0, 3).map(({id, label, title}) => (
+                    <div key={id} className="strength-mini">
+                        <span>{label}</span>
+                        <p>{title}</p>
                     </div>
                 ))}
             </div>

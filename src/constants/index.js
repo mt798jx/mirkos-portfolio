@@ -11,13 +11,13 @@ export const navLinks = [
   },
   {
     id: 3,
-    name: 'CV',
-    href: '#cv',
+    name: 'Work',
+    href: '#work',
   },
   {
     id: 4,
-    name: 'Work',
-    href: '#work',
+    name: 'Strengths',
+    href: '#strengths',
   },
   {
     id: 5,
@@ -26,43 +26,58 @@ export const navLinks = [
   },
   {
     id: 6,
+    name: 'CV',
+    href: '#cv',
+  },
+  {
+    id: 7,
     name: 'Contact',
     href: '#contact',
   },
 ];
 
-export const clientReviews = [
+export const collaborationNotes = [
   {
     id: 1,
-    name: 'Emily Johnson',
-    position: 'Marketing Director at GreenLeaf',
-    img: 'assets/review1.png',
-    review:
-      'Working with Miroslav was a fantastic experience. He transformed our outdated website into a modern, user-friendly platform. His attention to detail and commitment to quality are unmatched. Highly recommend him for any web dev projects.',
+    label: 'Architecture',
+    title: 'Clear technical thinking',
+    detail:
+      'I turn broad ideas into concrete system design, data flows, APIs, and implementation steps.',
   },
   {
     id: 2,
-    name: 'Mark Rogers',
-    position: 'Founder of TechGear Shop',
-    img: 'assets/review2.png',
-    review:
-      'Miroslav’s expertise in web development is truly impressive. He delivered a robust and scalable solution for our e-commerce site, and our online sales have significantly increased since the launch. He’s a true professional! Fantastic work.',
+    label: 'AI Engineering',
+    title: 'Practical AI systems',
+    detail:
+      'I build RAG, evaluation, automation, and assistant workflows around real use cases, not just demos.',
   },
   {
     id: 3,
-    name: 'John Dohsas',
-    position: 'Project Manager at UrbanTech ',
-    img: 'assets/review3.png',
-    review:
-      'I can’t say enough good things about Miroslav. He was able to take our complex project requirements and turn them into a seamless, functional website. His problem-solving abilities are outstanding.',
+    label: 'Full Stack',
+    title: 'Frontend to backend',
+    detail:
+      'I connect clean interfaces with reliable backend services, databases, authentication, and deployment.',
   },
   {
     id: 4,
-    name: 'Ether Smith',
-    position: 'CEO of BrightStar Enterprises',
-    img: 'assets/review4.png',
-    review:
-      'Miroslav was a pleasure to work with. He understood our requirements perfectly and delivered a website that exceeded our expectations. His skills in both frontend backend dev are top-notch.',
+    label: 'DevOps',
+    title: 'Reliable delivery',
+    detail:
+      'I care about Docker setup, readable code, predictable behavior, and projects that are easy to continue.',
+  },
+  {
+    id: 5,
+    label: 'Product Sense',
+    title: 'Useful before flashy',
+    detail:
+      'I focus on workflows, edge cases, and small details that make software easier to understand and use.',
+  },
+  {
+    id: 6,
+    label: 'Teamwork',
+    title: 'Calm collaboration',
+    detail:
+      'I like direct feedback, documented decisions, steady iteration, and communication that keeps work moving.',
   },
 ];
 
