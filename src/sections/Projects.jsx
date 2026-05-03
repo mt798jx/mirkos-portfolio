@@ -5,9 +5,12 @@ import {Center, OrbitControls} from "@react-three/drei";
 import CanvasLoader from "../components/Loading.jsx";
 import ProjectPreview from "../components/ProjectPreview.jsx";
 import {Element} from "react-scroll";
+import { useActiveTheme } from "../hooks/useActiveTheme.js";
 
 const Projects = () => {
     const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
+    const theme = useActiveTheme();
+    const isLight = theme === 'light';
 
     const currentProject= myProjects[selectedProjectIndex];
     const projectCount = myProjects.length;
@@ -27,7 +30,7 @@ const Projects = () => {
             <p className="head-text">My work</p>
 
             <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
-                <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200">
+                <div className="project-copy_panel flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200">
                     <div className="absolute top-0 right-0">
                         <img src={currentProject.spotlight} alt="spotlight" className="w-full h-96 object-cover rounded-xl"/>
                     </div>
@@ -82,17 +85,17 @@ const Projects = () => {
                     </div>
                 </div>
 
-                <div className="border border-black-300 bg-black-200 rounded-lg h-96 md:h-full">
+                <div className="project-preview_panel border border-black-300 bg-black-200 rounded-lg h-96 md:h-full">
                     <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
-                        <ambientLight intensity={1.5}/>
-                        <directionalLight position={[6, 8, 5]} intensity={2.1} />
-                        <pointLight position={[-4, -2, 4]} intensity={2.2} color="#38bdf8" />
-                        <pointLight position={[3, 2, 3]} intensity={1.2} color="#22c55e" />
+                        <ambientLight intensity={isLight ? 2.35 : 1.5}/>
+                        <directionalLight position={[6, 8, 5]} intensity={isLight ? 2.6 : 2.1} />
+                        <pointLight position={[-4, -2, 4]} intensity={isLight ? 1.35 : 2.2} color="#38bdf8" />
+                        <pointLight position={[3, 2, 3]} intensity={isLight ? 0.9 : 1.2} color="#22c55e" />
 
                         <Center>
                             <Suspense fallback={<CanvasLoader/> }>
                                 <group scale={1.08} position={[0, 0.08, 0]}>
-                                    <ProjectPreview texture={currentProject.texture} />
+                                    <ProjectPreview texture={currentProject.texture} isLight={isLight} />
                                 </group>
                             </Suspense>
                         </Center>

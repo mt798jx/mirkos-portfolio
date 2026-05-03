@@ -10,7 +10,7 @@ import Experience from "./sections/Experience.jsx";
 
 const App = () => {
   return (
-    <main className="max-w-7xl mx-auto relative">
+    <main className="relative min-h-screen overflow-hidden theme-bg">
         <Navbar />
         <Hero />
         <About />

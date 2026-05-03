@@ -53,7 +53,7 @@ const Contact = () => {
     return (
         <Element className="c-space my-20" name="contact">
             <div className="relative min-h-screen flex items-center justify-center flex-col">
-                <img src="/assets/terminal.png" alt="terminal background" className="absolute inset-0 min-h-screen max-md:hidden" />
+                <img src="/assets/terminal.png" alt="terminal background" className="contact-terminal absolute inset-0 min-h-screen max-md:hidden" />
                 <div className="contact-container">
                     <h3 className="head-text">Let&apos;s talk</h3>
                     <p className="text-lg text-white-600 mt-3">

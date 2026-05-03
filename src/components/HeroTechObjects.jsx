@@ -24,7 +24,7 @@ const AnimatedGroup = ({ children, position, rotation, speed = 1, drift = 0.18, 
   );
 };
 
-const SpinningRing = ({ position }) => {
+const SpinningRing = ({ position, isLight = false }) => {
   const ring = useRef();
 
   useFrame((state, delta) => {
@@ -36,12 +36,12 @@ const SpinningRing = ({ position }) => {
   return (
     <mesh ref={ring} position={position}>
       <torusGeometry args={[0.72, 0.018, 12, 48]} />
-      <meshStandardMaterial color="#38bdf8" emissive="#38bdf8" emissiveIntensity={0.75} />
+      <meshStandardMaterial color={isLight ? "#0284c7" : "#38bdf8"} emissive="#38bdf8" emissiveIntensity={isLight ? 0.28 : 0.75} />
     </mesh>
   );
 };
 
-const PulsingNode = ({ position, delay = 0 }) => {
+const PulsingNode = ({ position, delay = 0, isLight = false }) => {
   const node = useRef();
 
   useFrame((state) => {
@@ -52,21 +52,27 @@ const PulsingNode = ({ position, delay = 0 }) => {
   return (
     <mesh ref={node} position={position}>
       <sphereGeometry args={[0.14, 24, 24]} />
-      <meshStandardMaterial color="#cbd5e1" emissive="#38bdf8" emissiveIntensity={0.35} />
+      <meshStandardMaterial color={isLight ? "#2563eb" : "#cbd5e1"} emissive="#38bdf8" emissiveIntensity={isLight ? 0.18 : 0.35} />
     </mesh>
   );
 };
 
-const DatabaseStack = () => (
+const DatabaseStack = ({ isLight = false }) => (
   <Float floatIntensity={1.35} rotationIntensity={0.35}>
     <AnimatedGroup position={[-10.2, 0.35, -1.15]} rotation={[0.08, 0.42, -0.08]} speed={1.05} drift={0.34} spin={0.22}>
       {[0, 0.36, 0.72].map((y, index) => (
         <group key={y} position={[0, y, 0]}>
           <mesh>
             <cylinderGeometry args={[0.72, 0.72, 0.2, 48]} />
-            <meshStandardMaterial color={index === 1 ? '#1e3a5f' : '#14243d'} metalness={0.45} roughness={0.3} emissive="#0f2d46" emissiveIntensity={0.3} />
+            <meshStandardMaterial
+              color={isLight ? (index === 1 ? '#38bdf8' : '#0ea5e9') : (index === 1 ? '#1e3a5f' : '#14243d')}
+              metalness={isLight ? 0.16 : 0.45}
+              roughness={isLight ? 0.48 : 0.3}
+              emissive="#38bdf8"
+              emissiveIntensity={isLight ? 0.12 : 0.3}
+            />
           </mesh>
-          <SpinningRing position={[0, 0.12, 0]} />
+          <SpinningRing position={[0, 0.12, 0]} isLight={isLight} />
         </group>
       ))}
       <pointLight position={[0, 0.6, 1]} intensity={2} distance={5} color="#38bdf8" />
@@ -74,17 +80,23 @@ const DatabaseStack = () => (
   </Float>
 );
 
-const TerminalPanel = () => (
+const TerminalPanel = ({ isLight = false }) => (
   <Float floatIntensity={1.1} rotationIntensity={0.24}>
     <AnimatedGroup position={[10.05, 0.55, -1.25]} rotation={[0.06, -0.5, 0.08]} speed={1.18} drift={0.28} spin={0.2}>
       <RoundedBox args={[2.35, 1.36, 0.1]} radius={0.08} smoothness={4}>
-        <meshStandardMaterial color="#152238" metalness={0.36} roughness={0.34} emissive="#0f2d46" emissiveIntensity={0.22} />
+        <meshStandardMaterial
+          color={isLight ? "#e8f1fb" : "#152238"}
+          metalness={isLight ? 0.12 : 0.36}
+          roughness={isLight ? 0.52 : 0.34}
+          emissive="#38bdf8"
+          emissiveIntensity={isLight ? 0.06 : 0.22}
+        />
       </RoundedBox>
       {[
         [-0.55, 0.34, 1.2, '#38bdf8'],
-        [-0.38, 0.08, 1.54, '#64748b'],
+        [-0.38, 0.08, 1.54, isLight ? '#475569' : '#64748b'],
         [-0.62, -0.18, 0.9, '#f97316'],
-        [-0.28, -0.42, 1.45, '#64748b'],
+        [-0.28, -0.42, 1.45, isLight ? '#475569' : '#64748b'],
       ].map(([x, y, width, color]) => (
         <mesh key={`${x}-${y}`} position={[x, y, 0.08]}>
           <boxGeometry args={[width, 0.045, 0.025]} />
@@ -95,7 +107,7 @@ const TerminalPanel = () => (
   </Float>
 );
 
-const NetworkNodes = () => (
+const NetworkNodes = ({ isLight = false }) => (
   <Float floatIntensity={1.2} rotationIntensity={0.3}>
     <AnimatedGroup position={[-9.35, -3.45, -0.8]} rotation={[-0.1, 0.25, 0.06]} speed={1.38} drift={0.36} spin={0.26}>
       {[
@@ -104,7 +116,7 @@ const NetworkNodes = () => (
         [0.82, 0.05, 0],
         [-0.05, -0.58, 0],
       ].map((position, index) => (
-        <PulsingNode key={position.join('-')} position={position} delay={index * 0.6} />
+          <PulsingNode key={position.join('-')} position={position} delay={index * 0.6} isLight={isLight} />
       ))}
       {[
         [[-0.75, 0.15, 0], [0.1, 0.65, 0]],
@@ -120,7 +132,7 @@ const NetworkNodes = () => (
         return (
           <mesh key={`${start.join('-')}-${end.join('-')}`} position={mid} rotation={[0, 0, Math.atan2(dy, dx)]}>
             <boxGeometry args={[length, 0.025, 0.02]} />
-            <meshStandardMaterial color="#60a5fa" emissive="#38bdf8" emissiveIntensity={0.62} />
+            <meshStandardMaterial color={isLight ? "#2563eb" : "#60a5fa"} emissive="#38bdf8" emissiveIntensity={isLight ? 0.18 : 0.62} />
           </mesh>
         );
       })}
@@ -128,7 +140,7 @@ const NetworkNodes = () => (
   </Float>
 );
 
-const CloudBlocks = () => (
+const CloudBlocks = ({ isLight = false }) => (
   <Float floatIntensity={1.25} rotationIntensity={0.25}>
     <AnimatedGroup position={[9.45, -3.28, -0.88]} rotation={[-0.08, -0.32, -0.05]} speed={0.98} drift={0.34} spin={0.2}>
       {[
@@ -138,7 +150,13 @@ const CloudBlocks = () => (
         [0.84, -0.08, 0, 0.34],
       ].map(([x, y, z, size]) => (
         <RoundedBox key={`${x}-${size}`} position={[x, y, z]} args={[size, size, size]} radius={0.06} smoothness={3}>
-          <meshStandardMaterial color="#172033" metalness={0.4} roughness={0.34} emissive="#38bdf8" emissiveIntensity={0.26} />
+          <meshStandardMaterial
+            color={isLight ? "#0284c7" : "#172033"}
+            metalness={isLight ? 0.16 : 0.4}
+            roughness={isLight ? 0.46 : 0.34}
+            emissive="#38bdf8"
+            emissiveIntensity={isLight ? 0.08 : 0.26}
+          />
         </RoundedBox>
       ))}
       <mesh position={[0.08, -0.45, 0]}>
@@ -149,15 +167,15 @@ const CloudBlocks = () => (
   </Float>
 );
 
-const HeroTechObjects = ({ visible = true }) => {
+const HeroTechObjects = ({ visible = true, isLight = false }) => {
   if (!visible) return null;
 
   return (
     <group>
-      <DatabaseStack />
-      <TerminalPanel />
-      <NetworkNodes />
-      <CloudBlocks />
+      <DatabaseStack isLight={isLight} />
+      <TerminalPanel isLight={isLight} />
+      <NetworkNodes isLight={isLight} />
+      <CloudBlocks isLight={isLight} />
     </group>
   );
 };

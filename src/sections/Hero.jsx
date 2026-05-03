@@ -13,6 +13,7 @@ import { calculateSizes } from '../constants/index.js';
 import HeroWorkspace from '../components/HeroWorkspace.jsx';
 import HeroTechObjects from '../components/HeroTechObjects.jsx';
 import { Element } from 'react-scroll';
+import { useActiveTheme } from '../hooks/useActiveTheme.js';
 
 const Hero = () => {
   const [isMarqueePaused, setIsMarqueePaused] = useState(false);
@@ -29,6 +30,8 @@ const Hero = () => {
   const isSmall = useMediaQuery({ maxWidth: 440 });
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+  const theme = useActiveTheme();
+  const isLight = theme === 'light';
 
   const sizes = calculateSizes(isSmall, isMobile, isTablet);
 
@@ -63,24 +66,17 @@ const Hero = () => {
             <Leva hidden />
             <PerspectiveCamera makeDefault position={[0, 0, 30]} />
 
-            <group position={[0, -0.45, -3.2]}>
-              <mesh rotation={[0, 0, 0]}>
-                <planeGeometry args={[17, 8]} />
-                <meshBasicMaterial color="#06111f" transparent opacity={0.1} />
-              </mesh>
-            </group>
-
             <HeroCamera isMobile={isMobile}>
-              <HeroWorkspace scale={sizes.deskScale} position={sizes.deskPosition} rotation={[0.05, -0.18, 0]} />
+              <HeroWorkspace scale={sizes.deskScale} position={sizes.deskPosition} rotation={[0.05, -0.18, 0]} isLight={isLight} />
             </HeroCamera>
 
-            <HeroTechObjects visible={!isMobile} />
+            <HeroTechObjects visible={!isMobile} isLight={isLight} />
 
-            <ambientLight intensity={2.05} />
-            <directionalLight position={[10, 10, 10]} intensity={0.8} />
-            <pointLight position={[-10, 1, 5]} intensity={3.4} color="#38bdf8" />
-            <pointLight position={[10, 0, 5]} intensity={2.8} color="#f97316" />
-            <pointLight position={[0, -4, 5]} intensity={1.4} color="#60a5fa" />
+            <ambientLight intensity={isLight ? 2.65 : 2.05} />
+            <directionalLight position={[10, 10, 10]} intensity={isLight ? 1.15 : 0.8} />
+            <pointLight position={[-10, 1, 5]} intensity={isLight ? 2.2 : 3.4} color="#38bdf8" />
+            <pointLight position={[10, 0, 5]} intensity={isLight ? 1.8 : 2.8} color="#f97316" />
+            <pointLight position={[0, -4, 5]} intensity={isLight ? 1.05 : 1.4} color="#60a5fa" />
           </Suspense>
         </Canvas>
       </div>
