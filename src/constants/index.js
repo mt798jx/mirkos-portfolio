@@ -106,9 +106,9 @@ export const myProjects = [
   },
   {
     title: 'FractureLab - Interactive X-ray Fracture Diagnostics Trainer',
-    desc: 'FractureLab is an interactive educational platform for learning X-ray fracture diagnostics. It helps medical students and professionals practice fracture identification, measurement techniques and diagnostic reasoning through guided demos, training exercises, testing and AI-assisted learning.',
+    desc: 'FractureLab is an interactive educational platform for practicing X-ray fracture diagnostics. It helps medical students and professionals train fracture identification, measurement techniques and diagnostic reasoning through guided demos, exercises, tests and AI-assisted learning.',
     subdesc:
-      'Built with a microservice architecture using React, TypeScript, Vite, FastAPI, PostgreSQL, Redis, ChromaDB, LlamaIndex, LangChain, OpenAI embeddings, Google Gemini integration, Orthanc DICOM server, Cornerstone.js and Docker Compose, FractureLab provides DICOM-based X-ray viewing, interactive measurements, theory lessons, progress tracking, teacher/admin tools, RAG-powered chat assistance and automated training evaluation.',
+      'Built with React, TypeScript, FastAPI, PostgreSQL, Redis, ChromaDB, LlamaIndex, LangChain, Orthanc, Cornerstone.js and Docker Compose, FractureLab provides DICOM viewing, interactive measurements, progress tracking and RAG-powered chat assistance for guided diagnostics.',
     href: 'https://git.kpi.fei.tuke.sk/miroslav.tvrdon/maps',
     texture: '/textures/project/fracturelab.mp4',
     logo: '/assets/fracturelab-logo.svg',
@@ -143,9 +143,9 @@ export const myProjects = [
   },
   {
     title: 'TUKE ExamAI - AI Exam Evaluation Platform',
-    desc: 'TUKE ExamAI is a web-based platform for managing university exams, students, questions, grades and programming assignments. It provides separate interfaces for students and professors, supports classic and programming exam workflows, and integrates AI-assisted evaluation for submitted answers and code.',
+    desc: 'TUKE ExamAI is a web-based platform for managing exams, students, questions, grades and programming assignments. It provides separate interfaces for students and professors, supports classic and programming exam workflows, and integrates AI-assisted evaluation for answers and code.',
     subdesc:
-      'Built with a microservice architecture using Next.js, TypeScript, FastAPI, PostgreSQL, Google GenAI, GitPython and Docker Compose, the system combines authentication, student/professor dashboards, GitLab repository browsing, exam management, grade tracking and automated AI evaluation of programming tasks.',
+      'Built with a microservice architecture using Next.js, TypeScript, FastAPI, PostgreSQL, Google GenAI, GitPython and Docker Compose, the system combines authentication, student/professor dashboards, GitLab browsing, exam management, grade tracking and automated AI evaluation workflows for submitted assignments and teacher review flows.',
     href: 'https://git.kpi.fei.tuke.sk/miroslav.tvrdon/dp',
     texture: '/textures/project/examai.mp4',
     logo: '/assets/examai-logo.png',
