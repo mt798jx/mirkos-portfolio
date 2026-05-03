@@ -3,7 +3,7 @@ import {myProjects} from "../constants/index.js";
 import {Canvas} from "@react-three/fiber";
 import {Center, OrbitControls} from "@react-three/drei";
 import CanvasLoader from "../components/Loading.jsx";
-import DemoComputer from "../components/DemoComputer.jsx";
+import ProjectPreview from "../components/ProjectPreview.jsx";
 import {Element} from "react-scroll";
 
 const Projects = () => {
@@ -83,18 +83,20 @@ const Projects = () => {
                 </div>
 
                 <div className="border border-black-300 bg-black-200 rounded-lg h-96 md:h-full">
-                    <Canvas>
-                        <ambientLight intensity={Math.PI}/>
-                        <directionalLight position={[10, 10, 5]} />
+                    <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
+                        <ambientLight intensity={1.5}/>
+                        <directionalLight position={[6, 8, 5]} intensity={2.1} />
+                        <pointLight position={[-4, -2, 4]} intensity={2.2} color="#38bdf8" />
+                        <pointLight position={[3, 2, 3]} intensity={1.2} color="#22c55e" />
 
                         <Center>
                             <Suspense fallback={<CanvasLoader/> }>
-                                <group scale={2} position={[0, -3, 0]} rotation={[0, -0.1, 0]}>
-                                    <DemoComputer texture={currentProject.texture} />
+                                <group scale={1.08} position={[0, 0.08, 0]}>
+                                    <ProjectPreview texture={currentProject.texture} />
                                 </group>
                             </Suspense>
                         </Center>
-                        <OrbitControls maxPolarAngle={Math.PI / 2} enableZoom={false}/>
+                        <OrbitControls maxPolarAngle={Math.PI / 2} enableZoom={false} enablePan={false}/>
                     </Canvas>
                 </div>
 
