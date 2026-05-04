@@ -7,10 +7,12 @@ import Clients from "./sections/Clients.jsx";
 import Contact from "./sections/Contact.jsx";
 import {Footer} from "./sections/Footer.jsx";
 import Experience from "./sections/Experience.jsx";
+import { Analytics } from "@vercel/analytics/react"
 
 const App = () => {
   return (
     <main className="relative min-h-screen overflow-hidden theme-bg">
+        <Analytics />
         <Navbar />
         <Hero />
         <About />
