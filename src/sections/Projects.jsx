@@ -1,14 +1,18 @@
 import {Suspense, useState} from 'react'
-import {myProjects} from "../constants/index.js";
 import {Canvas} from "@react-three/fiber";
 import {Center, OrbitControls} from "@react-three/drei";
 import CanvasLoader from "../components/Loading.jsx";
 import ProjectPreview from "../components/ProjectPreview.jsx";
 import {Element} from "react-scroll";
 import { useActiveTheme } from "../hooks/useActiveTheme.js";
+import { content } from "../content.js";
+import { useI18n } from "../i18n.jsx";
 
 const Projects = () => {
     const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
+    const { language } = useI18n();
+    const projects = content[language].projects;
+    const myProjects = projects.items;
     const theme = useActiveTheme();
     const isLight = theme === 'light';
 
@@ -27,7 +31,7 @@ const Projects = () => {
 
     return (
         <Element className="c-space my-20" name="work">
-            <p className="head-text">My work</p>
+            <p className="head-text">{projects.title}</p>
 
             <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
                 <div className="project-copy_panel flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200">
@@ -57,13 +61,13 @@ const Projects = () => {
                         </div>
 
                         <a className="flex items-center gap-2 cursor-pointer text-white-600" href={currentProject.href} target={"_blank"} rel="noreferrer">
-                            <p>Check Live Site</p>
+                            <p>{projects.linkLabel}</p>
                             <img src="/assets/arrow-up.png" alt="arrow" className="w-3 h-3"/>
                         </a>
                     </div>
 
                     <div className="flex justify-between items-center mt-7">
-                        <button className="arrow-btn" onClick={() => handleNavigation('previous')}>
+                        <button className="arrow-btn" onClick={() => handleNavigation('previous')} aria-label={projects.previousLabel}>
                             <img src="/assets/left-arrow.png" alt="left arrow" className="w-4 h-4"/>
                         </button>
                         <div className="flex items-center gap-2.5">
@@ -71,6 +75,7 @@ const Projects = () => {
                                 <button
                                     key={index}
                                     onClick={() => setSelectedProjectIndex(index)}
+                                    aria-label={`${projects.selectLabel} ${index + 1}`}
                                     className={`w-3 h-3 rounded-full transition-all duration-300 hover:bg-white hover:scale-110 hover:opacity-80 ${
                                         selectedProjectIndex === index
                                             ? 'bg-white scale-125'
@@ -79,7 +84,7 @@ const Projects = () => {
                                 />
                             ))}
                         </div>
-                        <button className="arrow-btn" onClick={() => handleNavigation('next')}>
+                        <button className="arrow-btn" onClick={() => handleNavigation('next')} aria-label={projects.nextLabel}>
                             <img src="/assets/right-arrow.png" alt="right arrow" className="w-4 h-4"/>
                         </button>
                     </div>

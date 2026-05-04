@@ -1,4 +1,6 @@
 import { Element } from 'react-scroll';
+import { content } from '../content.js';
+import { useI18n } from '../i18n.jsx';
 
 const socialLinks = [
     {
@@ -19,12 +21,15 @@ const socialLinks = [
 ];
 
 export const Footer = () => {
+    const { language } = useI18n();
+    const footer = content[language].footer;
+
     return (
         <Element className="c-space pt-7 pb-3 border-t border-black-300 flex justify-between items-center flex-wrap gap-5">
             <div className="text-white-500 flex gap-2">
-                <p>Terms & Conditions</p>
+                <p>{footer.terms}</p>
                 <p>|</p>
-                <p>Privacy Policy</p>
+                <p>{footer.privacy}</p>
             </div>
 
             <div className="flex gap-3">
@@ -34,7 +39,7 @@ export const Footer = () => {
                         href={item.href}
                         target="_blank"
                         rel="noreferrer"
-                        aria-label={`Open ${item.name}`}
+                        aria-label={`${footer.socialLabel} ${item.name}`}
                         className="social-icon"
                     >
                         <img src={item.icon} alt="" className="w-1/2 h-1/2" />
@@ -42,7 +47,7 @@ export const Footer = () => {
                 ))}
             </div>
 
-            <p className="text-white-500">© 2025 Miroslav Tvrdoň. All rights reserved.</p>
+            <p className="text-white-500">© 2025 Miroslav Tvrdoň. {footer.rights}</p>
         </Element>
     )
 }

@@ -1,11 +1,16 @@
-import { workExperiences } from '../constants/index.js';
 import { Element } from 'react-scroll';
+import { content } from '../content.js';
+import { useI18n } from '../i18n.jsx';
 
 const WorkExperience = () => {
+    const { language } = useI18n();
+    const experience = content[language].experience;
+    const workExperiences = experience.items;
+
     return (
         <Element className="c-space my-20" name="experience">
             <div className="w-full text-white-600">
-                <p className="head-text">My Work Experience</p>
+                <p className="head-text">{experience.title}</p>
 
                 <div className="work-container">
                     <div className="work-content">

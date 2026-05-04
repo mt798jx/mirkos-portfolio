@@ -618,6 +618,27 @@ body {
   background: var(--surface-elevated);
 }
 
+.language-toggle {
+  display: inline-grid;
+  min-width: 2.75rem;
+  height: 2.6rem;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-glass);
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  box-shadow: 0 12px 28px var(--shadow);
+  transition: border-color 200ms ease, background-color 200ms ease, transform 200ms ease;
+}
+
+.language-toggle:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
 .theme-icon,
 .social-icon img,
 .arrow-btn img,

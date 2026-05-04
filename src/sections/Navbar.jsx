@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link as LinkScroll } from 'react-scroll';
 
-import { navLinks } from '../constants/index.js';
+import { content } from '../content.js';
+import { useI18n } from '../i18n.jsx';
 
-const NavItems = ({ onClick = () => {} }) => (
+const NavItems = ({ navLinks, onClick = () => {} }) => (
   <ul className="nav-ul">
     {navLinks.map((item) => (
       <li key={item.id} className="nav-li">
@@ -28,6 +29,8 @@ const NavItems = ({ onClick = () => {} }) => (
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { language, toggleLanguage } = useI18n();
+  const navLinks = content[language].navLinks;
   const [theme, setTheme] = useState(() => {
     if (typeof window === 'undefined') return 'dark';
 
@@ -40,6 +43,7 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
   const toggleTheme = () => setTheme((current) => (current === 'dark' ? 'light' : 'dark'));
+  const nextLanguage = language === 'en' ? 'SK' : 'EN';
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -66,8 +70,18 @@ const Navbar = () => {
 
           <div className="flex items-center gap-3">
             <nav className="sm:flex hidden">
-              <NavItems />
+              <NavItems navLinks={navLinks} />
             </nav>
+
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              className="language-toggle"
+              aria-label={`Switch language to ${nextLanguage}`}
+              title={`Switch language to ${nextLanguage}`}
+            >
+              {language.toUpperCase()}
+            </button>
 
             <button
               type="button"
@@ -103,7 +117,7 @@ const Navbar = () => {
 
       <div className={`nav-sidebar ${isOpen ? 'max-h-screen' : 'max-h-0'}`}>
         <nav className="p-5">
-          <NavItems onClick={closeMenu} />
+          <NavItems navLinks={navLinks} onClick={closeMenu} />
         </nav>
       </div>
     </header>

@@ -5,12 +5,16 @@ import {Element} from "react-scroll";
 
 import { Link as LinkScroll } from 'react-scroll';
 import { useActiveTheme } from "../hooks/useActiveTheme.js";
+import { content } from "../content.js";
+import { useI18n } from "../i18n.jsx";
 
-const kosice = { lat: 48.7164, lng: 21.2611, label: 'Kosice, Slovakia' };
+const kosice = { lat: 48.7164, lng: 21.2611 };
 
 const About = () => {
     const [hasCopied, setHasCopied] = useState(false);
     const globeRef = useRef();
+    const { language } = useI18n();
+    const about = content[language].about;
     const theme = useActiveTheme();
     const isLight = theme === 'light';
     const globeSize = 326;
@@ -44,12 +48,12 @@ const About = () => {
     const locationLabels = useMemo(() => [
         {
             ...kosice,
-            text: kosice.label,
+            text: about.locationLabel,
             color: globeTheme.labelColor,
             size: isLight ? 1.45 : 1.05,
             altitude: isLight ? 0.11 : 0.045,
         },
-    ], [globeTheme.labelColor, isLight]);
+    ], [about.locationLabel, globeTheme.labelColor, isLight]);
 
     const locationArcs = useMemo(() => [
         {
@@ -121,8 +125,8 @@ const About = () => {
                             />
                         </div>
                         <div>
-                            <p className="grid-headtext">Software Engineer</p>
-                            <p className="grid-subtext">I build reliable software, data workflows, and automation with a practical mindset.</p>
+                            <p className="grid-headtext">{about.profileTitle}</p>
+                            <p className="grid-subtext">{about.profileText}</p>
                         </div>
                     </div>
                 </div>
@@ -137,8 +141,8 @@ const About = () => {
                             />
                         </div>
                         <div>
-                            <p className="grid-headtext">Tech Stack</p>
-                            <p className="grid-subtext">Focused on software, data platforms, automation, and practical engineering tools.</p>
+                            <p className="grid-headtext">{about.techTitle}</p>
+                            <p className="grid-subtext">{about.techText}</p>
                         </div>
                     </div>
                 </div>
@@ -191,8 +195,8 @@ const About = () => {
                             />
                         </div>
                         <div>
-                            <p className="grid-headtext">Based in Košice, Slovakia</p>
-                            <p className="grid-subtext">Open to clear communication, teamwork, and learning fast in technical environments.</p>
+                            <p className="grid-headtext">{about.locationTitle}</p>
+                            <p className="grid-subtext">{about.locationText}</p>
                             <LinkScroll
                                 to="contact"
                                 smooth={true}
@@ -202,7 +206,7 @@ const About = () => {
                                 activeClass="nav-active"
                                 className="w-fit cursor-pointer"
                             >
-                                <Button name="Contact Me" isBeam containerClass="w-full mt-10"/>
+                                <Button name={about.contactButton} isBeam containerClass="w-full mt-10"/>
                             </LinkScroll>
                         </div>
                     </div>
@@ -218,8 +222,8 @@ const About = () => {
                             />
                         </div>
                         <div>
-                            <p className="grid-headtext">Engineering mindset</p>
-                            <p className="grid-subtext">I like turning unclear problems into structured, maintainable solutions that people can actually use. I value clean communication, ownership, and steady improvement.</p>
+                            <p className="grid-headtext">{about.mindsetTitle}</p>
+                            <p className="grid-subtext">{about.mindsetText}</p>
                         </div>
                     </div>
                 </div>
@@ -234,7 +238,7 @@ const About = () => {
                             />
                         </div>
                         <div className="space-y-2">
-                            <p className="grid-subtext text-center">Contact me</p>
+                            <p className="grid-subtext text-center">{about.contactTitle}</p>
                             <div className="copy-container" onClick={handleCopy}>
                                 <img src={hasCopied ? "assets/tick.svg" : "assets/copy.svg"} alt="copy" />
                                 <p className="lg:text-2xl md:text-xl font-medium text-gray_gradient text-white">miroslav@mtvrdon.com</p>

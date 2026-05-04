@@ -8,10 +8,12 @@ import Contact from "./sections/Contact.jsx";
 import {Footer} from "./sections/Footer.jsx";
 import Experience from "./sections/Experience.jsx";
 import { Analytics } from "@vercel/analytics/react"
+import { I18nProvider } from "./i18n.jsx";
 
 const App = () => {
   return (
-    <main className="relative min-h-screen overflow-hidden theme-bg">
+    <I18nProvider>
+      <main className="relative min-h-screen overflow-hidden theme-bg">
         <Analytics />
         <Navbar />
         <Hero />
@@ -22,7 +24,8 @@ const App = () => {
         <CV />
         <Contact />
         <Footer />
-    </main>
+      </main>
+    </I18nProvider>
   );
 };
 

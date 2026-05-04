@@ -14,19 +14,14 @@ import HeroWorkspace from '../components/HeroWorkspace.jsx';
 import HeroTechObjects from '../components/HeroTechObjects.jsx';
 import { Element } from 'react-scroll';
 import { useActiveTheme } from '../hooks/useActiveTheme.js';
+import { content } from '../content.js';
+import { useI18n } from '../i18n.jsx';
 
 const Hero = () => {
   const [isMarqueePaused, setIsMarqueePaused] = useState(false);
-  const marqueeItems = [
-    'Software Engineering',
-    'Data Platforms',
-    'Automation',
-    'Cloud Workflows',
-    'Clean Architecture',
-    'Reliable Systems',
-    'Chatbot Development',
-    'IT Support',
-  ];
+  const { language } = useI18n();
+  const hero = content[language].hero;
+  const marqueeItems = hero.marqueeItems;
   const isSmall = useMediaQuery({ maxWidth: 440 });
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
@@ -38,13 +33,13 @@ const Hero = () => {
   return (
     <Element className="hero-section w-full flex flex-col relative overflow-hidden" name="home" id="home">
       <div className="w-full mx-auto flex flex-col sm:mt-32 mt-24 c-space gap-3 relative z-10">
-        <p className="hero_tag text-gray_gradient">Software Engineer</p>
+        <p className="hero_tag text-gray_gradient">{hero.role}</p>
         <p className="max-w-2xl mx-auto text-center text-white-600 sm:text-lg text-sm leading-7">
-          I build reliable software, data-driven tools, and polished digital experiences with a focus on clean architecture, automation, and real-world impact.
+          {hero.intro}
         </p>
         <div
           className="hero-marquee"
-          aria-label="Core engineering focus"
+          aria-label={hero.focusLabel}
           onPointerEnter={() => setIsMarqueePaused(true)}
           onPointerLeave={() => setIsMarqueePaused(false)}
         >
@@ -88,7 +83,7 @@ const Hero = () => {
             duration={500}
             offset={-70}
             className="w-fit cursor-pointer">
-          <Button name="Explore my work" isBeam containerClass="sm:w-fit w-full sm:min-w-96" />
+          <Button name={hero.cta} isBeam containerClass="sm:w-fit w-full sm:min-w-96" />
         </LinkScroll>
       </div>
     </Element>

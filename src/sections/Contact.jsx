@@ -1,9 +1,13 @@
 import {useRef, useState} from 'react'
 import emailjs from '@emailjs/browser'
 import { Element } from 'react-scroll';
+import { content } from '../content.js';
+import { useI18n } from '../i18n.jsx';
 
 const Contact = () => {
     const formRef = useRef();
+    const { language } = useI18n();
+    const contact = content[language].contact;
 
     const [loading, setLoading] = useState(false);
     const [form, setForm] = useState({
@@ -36,7 +40,7 @@ const Contact = () => {
                 "Oe8X_tk96DgoDD1Xt")
 
             setLoading(false);
-            alert("Message sent");
+            alert(contact.success);
 
             setForm({
                 name: '',
@@ -46,7 +50,7 @@ const Contact = () => {
         } catch (error) {
             setLoading(false);
             console.log(error);
-            alert("Message failed.");
+            alert(contact.error);
         }
     }
 
@@ -55,37 +59,36 @@ const Contact = () => {
             <div className="relative min-h-screen flex items-center justify-center flex-col">
                 <img src="/assets/terminal.png" alt="terminal background" className="contact-terminal absolute inset-0 min-h-screen max-md:hidden" />
                 <div className="contact-container">
-                    <h3 className="head-text">Let&apos;s talk</h3>
+                    <h3 className="head-text">{contact.title}</h3>
                     <p className="text-lg text-white-600 mt-3">
-                        Whether you’re looking to build a new website, improve your existing platform, or bring a unique project to
-                        life, I’m here to help.
+                        {contact.intro}
                     </p>
 
                     <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col space-y-7">
                         <label className="space-y-3">
-                            <span className="field-label">Full Name</span>
+                            <span className="field-label">{contact.nameLabel}</span>
                             <input type="text"
                                    name="name"
                                    value={form.name}
                                    onChange={handleChange}
                                    required
                                    className="field-input"
-                                   placeholder="John Doe"/>
+                                   placeholder={contact.namePlaceholder}/>
                         </label>
 
                         <label className="space-y-3">
-                            <span className="field-label">Email</span>
+                            <span className="field-label">{contact.emailLabel}</span>
                             <input type="email"
                                    name="email"
                                    value={form.email}
                                    onChange={handleChange}
                                    required
                                    className="field-input"
-                                   placeholder="johndoe@gmail.com"/>
+                                   placeholder={contact.emailPlaceholder}/>
                         </label>
 
                         <label className="space-y-3">
-                            <span className="field-label">Your Message</span>
+                            <span className="field-label">{contact.messageLabel}</span>
                             <textarea type="text"
                                       name="message"
                                       value={form.message}
@@ -93,11 +96,11 @@ const Contact = () => {
                                       required
                                       rows={5}
                                       className="field-input"
-                                      placeholder="Hi, I&apos;m interested in..."/>
+                                      placeholder={contact.messagePlaceholder}/>
                         </label>
 
                         <button className="field-btn" type="submit" disabled={loading}>
-                            {loading ? 'Sending...' : 'Send Message'}
+                            {loading ? contact.sending : contact.send}
                             <img src="/assets/arrow-up.png" alt="arrow-up" className="field-btn_arrow"/>
                         </button>
                     </form>
