@@ -213,7 +213,7 @@ export const workExperiences = [
     pos: 'Software Engineer',
     duration: 'May 2026 - Present',
     title:
-      'Beginning a new role focused on software and data engineering workflows. I am building domain knowledge while working with modern data platforms such as Click, Snowflake, and Databricks.',
+      'Beginning a new role focused on software and data engineering workflows. I am building domain knowledge while working with modern data platforms such as Qlick and Databricks.',
     icon: '/assets/siemens-healthineers-logo.jpg',
   },
   {
